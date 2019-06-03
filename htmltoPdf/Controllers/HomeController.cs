@@ -53,7 +53,7 @@ namespace htmltoPdf.Controllers
         {
             string _headerUrl = Url.Action("Encabezado","Home",null,"http");
             ReportServicio reportServicio = new ReportServicio();
-            string footer = string.Format("--header-spacing \"50\" --footer-right \" Page: [page]/[toPage]\"  --footer-font-size \"9\" --header-html  \"{0}\" --print-media-type ", _headerUrl);
+            string footer = string.Format(" --footer-right \" Page: [page]/[toPage]\"  --footer-font-size \"9\" --header-html  \"{0}\" --print-media-type ", _headerUrl);
             var html = reportServicio.html();
             ViewBag.html = html;
             var name = "Documento.pdf";
@@ -62,9 +62,10 @@ namespace htmltoPdf.Controllers
                 FileName = name,
                 //PageOrientation = Orientation.Portrait,
                 //MinimumFontSize = 10,
-                PageMargins = new Margins(60,20,40,20), 
+                PageMargins = new Margins(20,20,40,20), 
                 PageSize = Size.A4,
-                CustomSwitches = footer
+                CustomSwitches = footer,
+                Password="123"
 
             };
             return PDFView;
